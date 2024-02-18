@@ -65,7 +65,7 @@ function buildPieChart(sample){
 
     var labels = data.map(data => data.fall);
     var data = data.map(data => data.count);
-    var colors = ['blue', 'green'];
+    var colors = ["brown", "orange"];
 
     var ctx = document.getElementById("PieChart").getContext("2d");
 
@@ -83,16 +83,20 @@ function buildPieChart(sample){
                 data: data,
                 backgroundColor: colors,
                 responsive: true,
-                maintainAspectRatio: false, 
-                aspectRatio: 0.5 
+                maintainAspectRatio: true, 
+                aspectRatio: 3
             }]
         },
         options: {
-            title: {
-                display: true,
-                text: "Meteorite Fall vs Found"
-            }
-        }
+          plugins: {
+              title: {
+                  display: true,
+                  text: 'Fall Type'
+              }
+          }
+      }
+       
+      
     });
 
   });
@@ -125,23 +129,52 @@ function buildClassBarChart(sample){
       datasets: [{
           label: "Count",
           data: counts,
-          backgroundColor: "rgba(54, 162, 235, 0.2)",
-          borderColor: "rgba(54, 162, 235, 1)",
-          borderWidth: 1
+          // backgroundColor: "rgba(54, 162, 235, 0.2)",
+          // borderColor: "rgba(54, 162, 235, 1)",
+          backgroundColor: "#FFD966", // Set the background color to earth tone
+          borderColor: "#FFD966",
+          borderWidth: 3
       }]
     },
+
     options: {
-      title: {
-        display: true,
-        text: "Distribution of Meteorite by class"
+      legend: {
+          display: true
+      },
+      plugins: {
+        title: {
+            display: true,
+            text: "Distribution of Meteorites by Class"
+        }
     },
+      indexAxis: "x",
       scales: {
+          x: {
+              display: true,
+              title: {
+                  display: true,
+                  text: "class"
+              }
+          },
           y: {
-              beginAtZero: true
+              display: true,
+              title: {
+                  display: true,
+                  text: 'count'
+              },
+              ticks: {
+                beginAtZero: true,
+                stepSize: 1 // Set the step size to 1 for y-axis increments
+            }
           }
+      },
+      title: {
+          display: true,
+          text: "Distribution of Meteorites by Class"
       }
   }
-      
+    
+        
   });
 });
 
@@ -294,7 +327,7 @@ for(i =0;i<value.length;i++){
       let layout = {
           title: "Top 10 Largest Metorite",
           xaxis: {title: "Mass(g)"},
-          yaxis: {title: "Meteroites"}
+          yaxis: {title: "Meteroites",automargin: true}
       };
 
       // Call Plotly to plot the bar chart

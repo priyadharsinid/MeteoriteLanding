@@ -27,19 +27,24 @@
             color: black;
         }
     </style>
+     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 </head>
 <body>
     <header>
+       <div class="col-md-12 jumbotron text-center">
         <h1>Welcome to Meteorite Landing Page!!</h1>
+       </div>
+       <div>
         <nav>
             <ul>
                 <li><a href="{{ url_for("charts") }}">Charts</a></li>
                 <li><a href="{{ url_for("maps") }}">Maps</a></li>
                 <li><a href="{{ url_for("heatmaps") }}">HeatMaps</a></li>
 
-                <!-- <li><a href="#contact">Contact</a></li> -->
+               
             </ul>
         </nav>
+    </div>
     </header>
 
     <section id="about">
